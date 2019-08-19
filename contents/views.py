@@ -32,6 +32,8 @@ def home(request):
     professional_skills = ProfessionalSkill.objects.order_by('id')
     education = Education.objects.order_by('-id')
     work_experience = WorkExperience.objects.order_by('-id')
+    categories = ProjectCategory.objects.order_by('name')
+    projects = Project.objects.order_by('id')
 
     context = {
         'seej': seej,
@@ -40,6 +42,8 @@ def home(request):
         'technical_skills': technical_skills,
         'professional_skills': professional_skills,
         'education': education,
-        'work_experience': work_experience
+        'work_experience': work_experience,
+        'categories': categories,
+        'projects': projects
     }
     return render(request, 'contents/portfolio.html', context)
