@@ -363,7 +363,7 @@ a {
   .btn-text-link a {
     margin-left: 10px; }
 
-/** 
+/**
  * -----------------
  * Social Icon Style
  * -----------------
@@ -585,7 +585,7 @@ button {
     box-shadow: 0 0px 2px 0 rgba(255, 255, 255, 0.8), 0 0px 1px 1px rgba(255, 255, 255, 0.8);
     border-color: transparent; }
 
-/** 
+/**
  * -----------------
  * General CSS
  * -----------------
@@ -846,7 +846,7 @@ body {
     ==============
 */
 /*---------------------------------------------------------------------*/
-/* Loader 
+/* Loader
 /*---------------------------------------------------------------------*/
 .section-loader {
   position: fixed;
@@ -1770,7 +1770,7 @@ body {
 */
 .old {
   /*==============
-            Overlay            
+            Overlay
   ================== */
   /*  Navigation Menu */ }
   .old .navbar-collapse {

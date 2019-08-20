@@ -16,4 +16,29 @@ class Migration(migrations.Migration):
             name='project_category',
             field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='projects', to='contents.ProjectCategory'),
         ),
+        migrations.AddField(
+            model_name='project',
+            name='code',
+            field=models.CharField(blank=True, max_length=20),
+        ),
+        migrations.AddField(
+            model_name='project',
+            name='demo_link',
+            field=models.CharField(blank=True, max_length=50),
+        ),
+        migrations.AddField(
+            model_name='project',
+            name='document',
+            field=models.FileField(blank=True, upload_to='project_documents'),
+        ),
+        migrations.AddField(
+            model_name='project',
+            name='main_image',
+            field=models.ImageField(default='', upload_to='project_images'),
+        ),
+        migrations.AddField(
+            model_name='project',
+            name='repo_link',
+            field=models.CharField(blank=True, max_length=50),
+        ),
     ]

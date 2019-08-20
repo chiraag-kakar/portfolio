@@ -77,9 +77,14 @@ class ProjectCategory(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
+    code = models.CharField(max_length=20, blank=True)
     description = models.TextField()
     date_started = models.CharField(max_length=20, blank=True)
     date_ended = models.CharField(max_length=20, blank=True)
+    main_image = models.ImageField(upload_to='project_images', default='')
+    repo_link = models.CharField(max_length=50, blank=True)
+    demo_link = models.CharField(max_length=50, blank=True)
+    document = models.FileField(upload_to='project_documents', blank=True)
     project_category = models.ForeignKey(ProjectCategory, on_delete=models.CASCADE, related_name='projects')
 
     def __str__(self):
@@ -88,7 +93,7 @@ class Project(models.Model):
 
 class ToolsAndTech(models.Model):
     name = models.CharField(max_length=30)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='toolsandtechs')
+    project = models.ManyToManyField(Project, related_name='toolsandtechs')
 
     def __str__(self):
         return self.name
@@ -100,4 +105,4 @@ class ProjectImage(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projectimages')
 
     def __str__(self):
-        return self.image.name
+        return f'{self.project.code} - {self.image.name}'

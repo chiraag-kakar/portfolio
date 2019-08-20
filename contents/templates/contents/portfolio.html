@@ -1,51 +1,6 @@
 {% extends 'contents/base.html' %}
 {% load static %}
 {% block content %}
-    <!-- Start Loader -->
-    <div class="section-loader">
-        <div class="loader">
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <!-- End Loader -->
-
-    <header class="black-bg mh-header mh-fixed-nav nav-scroll mh-xs-mobile-nav" id="mh-header">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <nav class="navbar navbar-expand-lg mh-nav nav-btn">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#mh-home">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#mh-about">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#mh-skills">Skills</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#mh-experience">Experiences</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#mh-portfolio">Projects</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#mh-contact">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </header>
-
     <section class="mh-home image-bg" id="mh-home" style="background-image: url({% static 'assets/images/Data-Science.png' %});">
         <div style="background-color: rgba(255, 255, 255, 0.9);">
             <div class="container">
@@ -53,7 +8,7 @@
                     <div class="col-sm-6">
                         <div class="mh-header-info">
                             <div class="mh-promo wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
-                                <span style="color: white">Hello I'm</span>
+                                <span style="color: white">Hello, I'm</span>
                             </div>
 
                             <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ seej.first_name }} {{ seej.last_name }}</h2>
@@ -129,11 +84,7 @@
             </div>
         </div>
     </section>
-    <!--
-    ===================
-       SKILLS
-    ===================
-    -->
+
     <section class="mh-skills" id="mh-skills">
         <div class="home-v-img">
             <div class="container">
@@ -181,11 +132,6 @@
         </div>
     </section>
 
-    <!--
-    ===================
-       EXPERIENCES
-    ===================
-    -->
     <section class="mh-experince image-bg featured-img-one" id="mh-experience">
         <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.9);">
             <div class="container">
@@ -198,7 +144,7 @@
                                 {% for e in education %}
                                     <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s" style="background-color: white">
                                         <h4>{{ e.school }}</h4>
-                                        <p style="color: blue">{{ e.level }}</p>
+                                        <p style="color: #2196F3"><b>{{ e.level }}</b></p>
                                         <div class="mh-eduyear">{{ e.duration }}</div>
                                         {% if e.achievements %}
                                             <span>Achievements:</span>
@@ -217,7 +163,7 @@
                                 {% for w in work_experience %}
                                     <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" style="background-color: white">
                                         <h4>{{ w.company }}</h4>
-                                        <p style="color: blue">{{ w.position }}</p>
+                                        <p style="color: #2196F3"><b>{{ w.position }}</b></p>
                                         <div class="mh-eduyear">{{ w.duration }}</div>
                                         {% if w.summary %}
                                             <span>Responsibilities:</span>
@@ -232,16 +178,12 @@
             </div>
         </div>
     </section>
-    <!--
-    ===================
-       PORTFOLIO
-    ===================
-    -->
+
     <section class="mh-portfolio" id="mh-portfolio">
         <div class="container">
             <div class="row section-separator">
                 <div class="section-title col-sm-12 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
-                    <h3 style="color: #100e17">Portfolio</h3>
+                    <h3 style="color: #100e17">Projects</h3>
                 </div>
                 <div class="part col-sm-12">
                     <div class="portfolio-nav col-sm-12" id="filter-button">
@@ -257,7 +199,7 @@
                             {% for project in projects %}
                                 <div class="grid-item col-md-4 col-sm-6 col-xs-12 {{ project.project_category.code }}">
                                     <figure>
-                                        <img src="/media/{{ project.projectimages.values.0.image }}" alt="img04">
+                                        <img src="{{ project.main_image.url }}" alt="{{ project.main_image.name }}">
                                         <figcaption class="fig-caption">
                                             <i class="fa fa-search"></i>
                                             <h5 class="title">{{ project.title }}</h5>
@@ -272,7 +214,7 @@
             </div> <!-- End: .row -->
         </div>
         {% for project in projects %}
-            <div class="mh-portfolio-modal" id="{{ project.pk }}" style="background-color: white">
+            <div class="mh-portfolio-modal" id="{{ project.pk }}" style="background-color: white;">
                 <div class="container">
                     <div class="row mh-portfolio-modal-inner">
                         <div class="col-sm-5">
@@ -285,21 +227,21 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            <a href="#" class="btn btn-fill">Live Demo</a>
+                            {% if project.repo_link %}
+                                <a href="{{ project.repo_link }}" class="btn btn-fill" target="_blank"><i class="fa fa-github"></i> Visit Repository</a>
+                            {% endif %}
+                            <br>
+                            {% if project.document %}
+                                <a href="{% url 'project_name' project.pk %}" class="btn btn-fill" target="_blank"><i class="fa fa-file"></i> View Documentation</a>
+                            {% endif %}
                         </div>
                         <div class="col-sm-7">
                             <div class="mh-portfolio-modal-img">
-{#                                <img src="{% static 'assets/images/pr-0.jif' %}" alt="" class="img-fluid">#}
-{#                                <p>All variations are organized separately so you can use / customize the template very easily.</p>#}
-{#                                <img src="{% static 'assets/images/pr-1.jif' %}" alt="" class="img-fluid">#}
-{#                                <p>All variations are organized separately so you can use / customize the template very easily.</p>#}
-
                                 {% for image in project.projectimages.values %}
-                                    <img src="/media/{{ image.image }}" alt="" class="img-fluid">
+                                    <center><img src="/media/{{ image.image }}" alt="" class="img-fluid"></center>
                                     {% if image.caption %}
-                                        <p>{{ image.caption }}</p>
+                                        <p style="text-align: center"><b>{{ image.caption }}</b></p>
                                     {% endif %}
-
                                 {% endfor %}
                             </div>
                         </div>
@@ -309,11 +251,6 @@
         {% endfor %}
     </section>
 
-    <!--
-    ===================
-       Testimonial
-    ===================
-    -->
     <section class="mh-testimonial" id="mh-testimonial">
         <div class="home-v-img">
             <div class="container">
@@ -389,133 +326,4 @@
             </div>
         </div>
     </section>
-
-    <!--
-    ===================
-       FOOTER 3
-    ===================
-    -->
-    <footer class="mh-footer mh-footer-3" id="mh-contact">
-        <div class="container-fluid">
-            <div class="row section-separator">
-                <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                    <h3>Contact Me</h3>
-                </div>
-                <div class="map-image image-bg col-sm-12">
-                    <div class="container mt-30">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 mh-footer-address">
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item shadow-1 media wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-location-arrow"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Address</h4>
-                                            <p>{{ seej.profile.address }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-envelope-o"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Email</h4>
-                                            <a href="mailto:{{ seej.email }}">{{ seej.email }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-phone"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Phone</h4>
-                                            <a href="callto:{{ seej.profile.contact_no }}">{{ seej.profile.contact_no }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                <form id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
-                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <textarea class="contact-message" id="message" rows="6" placeholder="Your Message" required></textarea>
-                                        </div>
-
-                                        <!-- Subject Button -->
-                                        <div class="btn-form col-sm-12">
-                                            <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="text-left text-xs-center">
-                                            <p>All right reserved Siful Islam @ 2018</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!--
-    ==============
-    * JS Files *
-    ==============
-    -->
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-    <!-- jQuery -->
-    <script src="{% static 'assets/plugins/js/jquery.min.js' %}"></script>
-    <!-- popper -->
-    <script src="{% static 'assets/plugins/js/popper.min.js' %}"></script>
-    <!-- bootstrap -->
-    <script src="{% static 'assets/plugins/js/bootstrap.min.js' %}"></script>
-    <!-- owl carousel -->
-    <script src="{% static 'assets/plugins/js/owl.carousel.js' %}"></script>
-    <!-- validator -->
-    <script src="{% static 'assets/plugins/js/validator.min.js' %}"></script>
-    <!-- wow -->
-    <script src="{% static 'assets/plugins/js/wow.min.js' %}"></script>
-    <!-- mixin js-->
-    <script src="{% static 'assets/plugins/js/jquery.mixitup.min.js' %}"></script>
-    <!-- circle progress-->
-    <script src="{% static 'assets/plugins/js/circle-progress.js' %}"></script>
-    <!-- jquery nav -->
-    <script src="{% static 'assets/plugins/js/jquery.nav.js' %}"></script>
-    <!-- Fancybox js-->
-    <script src="{% static 'assets/plugins/js/jquery.fancybox.min.js' %}"></script>
-    <!-- Map api -->
-    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc"></script>
-    <!-- isotope js-->
-    <script src="{% static 'assets/plugins/js/isotope.pkgd.js' %}"></script>
-    <script src="{% static 'assets/plugins/js/packery-mode.pkgd.js' %}"></script>
-    <!-- Custom Scripts-->
-    <script src="{% static 'assets/js/map-init.js' %}"></script>
-    <script src="{% static 'assets/js/custom-scripts.js' %}"></script>
 {% endblock %}
