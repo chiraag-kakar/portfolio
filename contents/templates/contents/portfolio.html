@@ -1,4 +1,5 @@
 {% extends 'contents/base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
     <section class="mh-home image-bg" id="mh-home" style="background-image: url({% static 'assets/images/Data-Science.png' %});">
@@ -227,13 +228,18 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            {% if project.repo_link %}
-                                <a href="{{ project.repo_link }}" class="btn btn-fill" target="_blank"><i class="fa fa-github"></i> Visit Repository</a>
+                            {% if project.repo_link or project.document %}
+                                {#                                <a href="{{ project.repo_link }}" class="btn" target="_blank"><i class="fa fa-github"></i> View Demo</a>#}
+                                <ul class="social-icon">
+                                    {% if project.repo_link %}
+                                        <li><a href="{{ project.repo_link }}" title="Visit Repository" target="_blank"><i class="fa fa-github"></i></a></li>
+                                    {% endif %}
+                                    {% if project.document %}
+                                        <li><a href="{% url 'project_document' project.pk %}" title="View Documentation" target="_blank"><i class="fa fa-file"></i></a></li>
+                                    {% endif %}
+                                </ul>
                             {% endif %}
                             <br>
-                            {% if project.document %}
-                                <a href="{% url 'project_name' project.pk %}" class="btn btn-fill" target="_blank"><i class="fa fa-file"></i> View Documentation</a>
-                            {% endif %}
                         </div>
                         <div class="col-sm-7">
                             <div class="mh-portfolio-modal-img">
@@ -251,7 +257,7 @@
         {% endfor %}
     </section>
 
-    <section class="mh-experince image-bg" style="background-image: url({% static 'assets/images/seminar.jpg' %});">
+    <section id="mh-certification"  class="mh-experince image-bg" style="background-image: url({% static 'assets/images/seminar.jpg' %});">
         <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.8);">
             <div class="container">
                 <div class="row section-separator">
@@ -287,14 +293,14 @@
                                         <div class="mh-eduyear">{{ seminar.event_date }}</div>
 
                                         {% if seminar.document or seminar.link_proof %}
-                                        <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                                            {% if seminar.document %}
-                                                <li><a href="{% url 'seminar' seminar.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
-                                            {% endif %}
-                                            {% if seminar.link_proof %}
-                                                <li><a href="{{ seminar.link_proof }}" title="Visit Link" target="_blank"><i class="fa {{ seminar.link_icon }}"></i></a></li>
-                                            {% endif %}
-                                        </ul>
+                                            <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
+                                                {% if seminar.document %}
+                                                    <li><a href="{% url 'seminar' seminar.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
+                                                {% endif %}
+                                                {% if seminar.link_proof %}
+                                                    <li><a href="{{ seminar.link_proof }}" title="Visit Link" target="_blank"><i class="fa {{ seminar.link_icon }}"></i></a></li>
+                                                {% endif %}
+                                            </ul>
                                         {% endif %}
 
                                     </div>
@@ -331,91 +337,4 @@
             </div>
         </div>
     </section>
-
-    <footer class="mh-footer mh-footer-3" id="mh-contact">
-        <div class="container-fluid">
-            <div class="row section-separator">
-                <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                    <h3>Contact Me</h3>
-                </div>
-                <div class="map-image image-bg col-sm-12">
-                    <div class="container mt-30">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 mh-footer-address">
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item shadow-1 media wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-location-arrow"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Address</h4>
-                                            <p>{{ seej.profile.address }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-envelope-o"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Email</h4>
-                                            <a href="mailto:{{ seej.email }}">{{ seej.email }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-phone"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Phone</h4>
-                                            <a href="callto:{{ seej.profile.contact_no }}">{{ seej.profile.contact_no }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                <form id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
-                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <textarea class="contact-message" id="message" rows="6" placeholder="Your Message" required></textarea>
-                                        </div>
-
-                                        <!-- Subject Button -->
-                                        <div class="btn-form col-sm-12">
-                                            <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="text-left text-xs-center">
-                                            <p>Template made by Siful Islam @ 2018</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 {% endblock %}
