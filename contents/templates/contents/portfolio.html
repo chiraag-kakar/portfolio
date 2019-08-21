@@ -1,0 +1,340 @@
+{% extends 'contents/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <section class="mh-home image-bg" id="mh-home" style="background-image: url({% static 'assets/images/Data-Science.png' %});">
+        <div style="background-color: rgba(255, 255, 255, 0.9);">
+            <div class="container">
+                <div class="row section-separator xs-column-reverse vertical-middle-content home-padding">
+                    <div class="col-sm-6">
+                        <div class="mh-header-info">
+                            <div class="mh-promo wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
+                                <span style="color: white">Hello, I'm</span>
+                            </div>
+
+                            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ seej.first_name }} {{ seej.last_name }}</h2>
+                            <h4 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">{{ seej.profile.title }}</h4>
+
+                            <ul>
+                                <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s"><i class="fa fa-envelope"></i><a href="mailto:{{ seej.email }}">{{ seej.email }}</a></li>
+                                <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s"><i class="fa fa-phone"></i><a>{{ seej.profile.contact_no }}</a></li>
+                                <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s"><i class="fa fa-map-marker"></i><a>{{ seej.profile.address }}</a></li>
+                            </ul>
+
+                            <ul class="social-icon wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
+                                <li><a href="{{ seej.profile.linkedin_url }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="{{ seej.profile.github_url }}" target="_blank"><i class="fa fa-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="hero-img wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
+                            <div class="img-border">
+                                <img src="{{ seej.profile.image.url }}" alt="Chris John Agarap" width="360px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mh-about" id="mh-about">
+        <div class="container">
+            <div class="row section-separator">
+                <div class="col-sm-12 col-md-6">
+                    <div class="mh-about-img shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
+                        <img src="{% static 'assets/images/ab-img.png' %}" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="mh-about-inner">
+                        <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">About Me</h2>
+                        <p class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ seej.profile.about_me }}</p>
+                        <div class="mh-about-tag wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                            <ul>
+                                {% for skill in top_skills %}
+                                    <li><span>{{ skill.name }}</span></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <a href="{% url 'resume' seej.profile.user.pk %}" class="btn btn-fill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" target="_blank">View Resume<i class="fa fa-file"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mh-service">
+        <div class="container">
+            <div class="row section-separator">
+                <div class="col-sm-12 text-center section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                    <h2>What I do</h2>
+                </div>
+                {% for f in focus %}
+                    <div class="col-sm-4">
+                        <div class="mh-service-item shadow-1 dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                            <i class="fa fa-{{ f.icon }}" style="color: {{ f.color }}"></i>
+                            <h3 style="color: white;">{{ f.name }}</h3>
+                            <p style="color: white;">
+                                {{ f.description }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="mh-skills" id="mh-skills">
+        <div class="home-v-img">
+            <div class="container">
+                <div class="row section-separator">
+                    <div class="section-title text-center col-sm-12">
+                        <!--<h2>Skills</h2>-->
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-skills-inner">
+                            <div class="mh-professional-skill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                                <h3>Technical Skills</h3>
+                                <div class="each-skills">
+                                    {% for tskill in technical_skills %}
+                                        <div class="candidatos">
+                                            <div class="parcial">
+                                                <div class="info">
+                                                    <div class="nome">{{ tskill.name }}</div>
+                                                    <div class="percentagem-num">{{ tskill.percentage }}%</div>
+                                                </div>
+                                                <div class="progressBar">
+                                                    <div class="percentagem" style="width: {{ tskill.percentage }}%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-professional-skills wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
+                            <h3>Professional Skills</h3>
+                            <ul class="mh-professional-progress">
+                                {% for pskill in professional_skills %}
+                                    <li>
+                                        <div class="mh-progress mh-progress-circle" data-progress="{{ pskill.percentage }}"></div>
+                                        <div class="pr-skill-name">{{ pskill.name }}</div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mh-experince image-bg" id="mh-experience" style="background-image: url({% static 'assets/images/educ-work.jpg' %});">
+        <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.8);">
+            <div class="container">
+                <div class="row section-separator">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-education">
+                            <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Education</h3>
+                            <div class="mh-education-deatils">
+                                <!-- Education Institutes-->
+                                {% for e in education %}
+                                    <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s" style="background-color: white">
+                                        <h4>{{ e.school }}</h4>
+                                        <p style="color: #2196F3"><b>{{ e.level }}</b></p>
+                                        <div class="mh-eduyear">{{ e.duration }}</div>
+                                        {% if e.achievements %}
+                                            <span>Achievements:</span>
+                                            <p>{{ e.achievements|safe }}</p>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-education">
+                            <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">Work Experience</h3>
+                            <div class="mh-education-deatils">
+                                {% for w in work_experience %}
+                                    <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s" style="background-color: white">
+                                        <h4>{{ w.company }}</h4>
+                                        <p style="color: #2196F3"><b>{{ w.position }}</b></p>
+                                        <div class="mh-eduyear">{{ w.duration }}</div>
+                                        {% if w.summary %}
+                                            <span>Responsibilities:</span>
+                                            <p>{{ w.summary|safe }}</p>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mh-portfolio" id="mh-portfolio">
+        <div class="container">
+            <div class="row section-separator">
+                <div class="section-title col-sm-12 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
+                    <h3 style="color: #100e17">Projects</h3>
+                </div>
+                <div class="part col-sm-12">
+                    <div class="portfolio-nav col-sm-12" id="filter-button">
+                        <ul>
+                            <li data-filter="*" class="current wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.0s"> <span>All Projects</span></li>
+                            {% for cat in categories %}
+                                <li data-filter=".{{ cat.code }}" class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.{{ forloop.counter }}s"><span>{{ cat.name }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="mh-project-gallery col-sm-12 wow fadeInUp" id="project-gallery" data-wow-duration="0.8s" data-wow-delay="0.5s">
+                        <div class="portfolioContainer row">
+                            {% for project in projects %}
+                                <div class="grid-item col-md-4 col-sm-6 col-xs-12 {{ project.project_category.code }}">
+                                    <figure>
+                                        <img src="{{ project.main_image.url }}" alt="{{ project.main_image.name }}">
+                                        <figcaption class="fig-caption">
+                                            <i class="fa fa-search"></i>
+                                            <h5 class="title">{{ project.title }}</h5>
+                                            <a data-fancybox data-src="#{{ project.pk }}"></a>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            {% endfor %}
+                        </div> <!-- End: .grid .project-gallery -->
+                    </div> <!-- End: .grid .project-gallery -->
+                </div> <!-- End: .part -->
+            </div> <!-- End: .row -->
+        </div>
+        {% for project in projects %}
+            <div class="mh-portfolio-modal" id="{{ project.pk }}" style="background-color: white;">
+                <div class="container">
+                    <div class="row mh-portfolio-modal-inner">
+                        <div class="col-sm-5">
+                            <h2>{{ project.title }}</h2>
+                            <p>{{ project.description|safe }}</p>
+                            <div class="mh-about-tag">
+                                <ul>
+                                    {% for tech in project.toolsandtechs.values %}
+                                        <li><span>{{ tech.name }}</span></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% if project.repo_link or project.document %}
+                                {#                                <a href="{{ project.repo_link }}" class="btn" target="_blank"><i class="fa fa-github"></i> View Demo</a>#}
+                                <ul class="social-icon">
+                                    {% if project.repo_link %}
+                                        <li><a href="{{ project.repo_link }}" title="Visit Repository" target="_blank"><i class="fa fa-github"></i></a></li>
+                                    {% endif %}
+                                    {% if project.document %}
+                                        <li><a href="{% url 'project_document' project.pk %}" title="View Documentation" target="_blank"><i class="fa fa-file"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+                            <br>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="mh-portfolio-modal-img">
+                                {% for image in project.projectimages.values %}
+                                    <center><img src="/media/{{ image.image }}" alt="" class="img-fluid"></center>
+                                    {% if image.caption %}
+                                        <p style="text-align: center"><b>{{ image.caption }}</b></p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section id="mh-certification"  class="mh-experince image-bg" style="background-image: url({% static 'assets/images/seminar.jpg' %});">
+        <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.8);">
+            <div class="container">
+                <div class="row section-separator">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-education">
+                            <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">Certifications and Licenses</h3>
+                            <div class="mh-education-deatils">
+                                <!-- Education Institutes-->
+                                {% for cert in certs %}
+                                    <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s" style="background-color: white">
+                                        <h4>{{ cert.title }}</h4>
+                                        <p style="color: #2196F3"><b>{{ cert.authority }}</b></p>
+                                        <div class="mh-eduyear">{{ cert.date_issued }}</div>
+                                        {% if cert.document %}
+                                            <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
+                                                <li><a href="{% url 'certification' cert.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-education">
+                            <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Seminars and Trainings</h3>
+                            <div class="mh-education-deatils">
+                                {% for seminar in seminars %}
+                                    <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" style="background-color: white">
+                                        <h4>{{ seminar.title }}</h4>
+                                        <p style="color: #2196F3"><b>{{ seminar.organizer }}</b></p>
+                                        <div class="mh-eduyear">{{ seminar.event_date }}</div>
+
+                                        {% if seminar.document or seminar.link_proof %}
+                                            <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
+                                                {% if seminar.document %}
+                                                    <li><a href="{% url 'seminar' seminar.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
+                                                {% endif %}
+                                                {% if seminar.link_proof %}
+                                                    <li><a href="{{ seminar.link_proof }}" title="Visit Link" target="_blank"><i class="fa {{ seminar.link_icon }}"></i></a></li>
+                                                {% endif %}
+                                            </ul>
+                                        {% endif %}
+
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mh-testimonial" id="mh-testimonial">
+        <div class="home-v-img">
+            <div class="container">
+                <div class="row section-separator">
+                    <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                        <h3 style="color: #100e17;">Recommendations</h3>
+                    </div>
+                    <div class="col-sm-12 wow fadeInUp" id="mh-client-review" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                        {% for recommendation in recommendations %}
+                            <div class="each-client-item">
+                                <div class="mh-client-item dark-bg black-shadow-1">
+                                    <img src="{{ recommendation.image.url }}" alt="" class="img-fluid">
+                                    <p style="color: white">{{ recommendation.message }}</p>
+                                    <h4 style="color: white">{{ recommendation.name }}</h4>
+                                    <span>{{ recommendation.summary }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

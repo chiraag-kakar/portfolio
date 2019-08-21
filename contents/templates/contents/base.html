@@ -1,0 +1,125 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agarap Web Portfolio</title>
+    <!-- Required meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Chris John Agarap's web portfolio" />
+    <meta name="keywords" content="agarap, resume, cv, portfolio" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="{% static 'assets/images/icon.png' %}">
+
+    <!-- Google Font-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'assets/icons/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/css/bootstrap.min.css' %}">
+    <!-- Animate CSS-->
+    <link rel="stylesheet" href="{% static 'assets/plugins/css/animate.css' %}">
+    <!-- Owl Carousel CSS-->
+    <link rel="stylesheet" href="{% static 'assets/plugins/css/owl.css' %}">
+    <!-- Fancybox-->
+    <link rel="stylesheet" href="{% static 'assets/plugins/css/jquery.fancybox.min.css' %}">
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+    <!-- Colors -->
+    <link rel="stylesheet" href="{% static 'assets/css/colors/blue-munsell.css' %}" title="blue-munsell">
+
+    <style>
+        h2, h3, h4, li, p {
+            color: #100e17;
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Loader -->
+    <div class="section-loader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- End Loader -->
+
+    <header class="black-bg mh-header mh-fixed-nav nav-scroll mh-xs-mobile-nav" id="mh-header" style="background-color: rgba(255, 255, 255, 0.8)">
+{#        <div class="overlay"></div>#}
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg mh-nav nav-btn">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#mh-home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mh-about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mh-skills">Skills</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mh-experience">Experiences</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mh-portfolio">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mh-certification">Certifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#mh-testimonial">Recommendations</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="mh-footer mh-footer-3" id="mh-contact">
+        <center><p>Web template made by Siful Islam @ 2018</p></center>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/plugins/js/jquery.min.js' %}"></script>
+    <!-- popper -->
+    <script src="{% static 'assets/plugins/js/popper.min.js' %}"></script>
+    <!-- bootstrap -->
+    <script src="{% static 'assets/plugins/js/bootstrap.min.js' %}"></script>
+    <!-- owl carousel -->
+    <script src="{% static 'assets/plugins/js/owl.carousel.js' %}"></script>
+    <!-- validator -->
+    <script src="{% static 'assets/plugins/js/validator.min.js' %}"></script>
+    <!-- wow -->
+    <script src="{% static 'assets/plugins/js/wow.min.js' %}"></script>
+    <!-- mixin js-->
+    <script src="{% static 'assets/plugins/js/jquery.mixitup.min.js' %}"></script>
+    <!-- circle progress-->
+    <script src="{% static 'assets/plugins/js/circle-progress.js' %}"></script>
+    <!-- jquery nav -->
+    <script src="{% static 'assets/plugins/js/jquery.nav.js' %}"></script>
+    <!-- Fancybox js-->
+    <script src="{% static 'assets/plugins/js/jquery.fancybox.min.js' %}"></script>
+    <!-- Map api -->
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc"></script>
+    <!-- isotope js-->
+    <script src="{% static 'assets/plugins/js/isotope.pkgd.js' %}"></script>
+    <script src="{% static 'assets/plugins/js/packery-mode.pkgd.js' %}"></script>
+    <!-- Custom Scripts-->
+    <script src="{% static 'assets/js/map-init.js' %}"></script>
+    <script src="{% static 'assets/js/custom-scripts.js' %}"></script>
+</body>
+</html>
