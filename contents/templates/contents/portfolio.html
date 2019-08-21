@@ -132,8 +132,8 @@
         </div>
     </section>
 
-    <section class="mh-experince image-bg featured-img-one" id="mh-experience">
-        <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.9);">
+    <section class="mh-experince image-bg" id="mh-experience" style="background-image: url({% static 'assets/images/educ-work.jpg' %});">
+        <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.8);">
             <div class="container">
                 <div class="row section-separator">
                     <div class="col-sm-12 col-md-6">
@@ -251,74 +251,55 @@
         {% endfor %}
     </section>
 
-    <section class="mh-testimonial" id="mh-testimonial">
-        <div class="home-v-img">
+    <section class="mh-experince image-bg" style="background-image: url({% static 'assets/images/seminar.jpg' %});">
+        <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.8);">
             <div class="container">
                 <div class="row section-separator">
-                    <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <h3>Client Reviews</h3>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-education">
+                            <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Certifications and Licenses</h3>
+                            <div class="mh-education-deatils">
+                                <!-- Education Institutes-->
+                                {% for cert in certs %}
+                                    <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s" style="background-color: white">
+                                        <h4>{{ cert.title }}</h4>
+                                        <p style="color: #2196F3"><b>{{ cert.authority }}</b></p>
+                                        <div class="mh-eduyear">{{ cert.date_issued }}</div>
+                                        {% if cert.document %}
+                                            <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
+                                                <li><a href="{% url 'certification' cert.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-12 wow fadeInUp" id="mh-client-review" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                        <div class="each-client-item">
-                            <div class="mh-client-item dark-bg black-shadow-1">
-                                <img src="{% static 'assets/images/c-1.png' %}" alt="" class="img-fluid">
-                                <p>Absolute wonderful ! I am completely
-                                    blown away.The very best.I was amazed
-                                    at the quality</p>
-                                <h4>John Mike</h4>
-                                <span>CEO, Author.Inc</span>
-                            </div>
-                        </div>
-                        <div class="each-client-item">
-                            <div class="mh-client-item dark-bg black-shadow-1">
-                                <img src="{% static 'assets/images/c-1.png' %}" alt="" class="img-fluid">
-                                <p>Absolute wonderful ! I am completely
-                                    blown away.The very best.I was amazed
-                                    at the quality</p>
-                                <h4>John Mike</h4>
-                                <span>CEO, Author.Inc</span>
-                            </div>
-                        </div>
 
-                        <div class="each-client-item">
-                            <div class="mh-client-item dark-bg black-shadow-1">
-                                <img src="{% static 'assets/images/c-1.png' %}" alt="" class="img-fluid">
-                                <p>Absolute wonderful ! I am completely
-                                    blown away.The very best.I was amazed
-                                    at the quality</p>
-                                <h4>John Mike</h4>
-                                <span>CEO, Author.Inc</span>
-                            </div>
-                        </div>
-                        <div class="each-client-item">
-                            <div class="mh-client-item dark-bg black-shadow-1">
-                                <img src="{% static 'assets/images/c-1.png' %}" alt="" class="img-fluid">
-                                <p>Absolute wonderful ! I am completely
-                                    blown away.The very best.I was amazed
-                                    at the quality</p>
-                                <h4>John Mike</h4>
-                                <span>CEO, Author.Inc</span>
-                            </div>
-                        </div>
-                        <div class="each-client-item">
-                            <div class="mh-client-item dark-bg black-shadow-1">
-                                <img src="{% static 'assets/images/c-1.png' %}" alt="" class="img-fluid">
-                                <p>Absolute wonderful ! I am completely
-                                    blown away.The very best.I was amazed
-                                    at the quality</p>
-                                <h4>John Mike</h4>
-                                <span>CEO, Author.Inc</span>
-                            </div>
-                        </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="mh-education">
+                            <h3>Seminars and Trainings</h3>
+                            <div class="mh-education-deatils">
+                                {% for seminar in seminars %}
+                                    <div class="mh-education-item wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" style="background-color: white">
+                                        <h4>{{ seminar.title }}</h4>
+                                        <p style="color: #2196F3"><b>{{ seminar.organizer }}</b></p>
+                                        <div class="mh-eduyear">{{ seminar.event_date }}</div>
 
-                        <div class="each-client-item">
-                            <div class="mh-client-item dark-bg black-shadow-1">
-                                <img src="{% static 'assets/images/c-1.png' %}" alt="" class="img-fluid">
-                                <p>Absolute wonderful ! I am completely
-                                    blown away.The very best.I was amazed
-                                    at the quality</p>
-                                <h4>John Mike</h4>
-                                <span>CEO, Author.Inc</span>
+                                        {% if seminar.document or seminar.link_proof %}
+                                        <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
+                                            {% if seminar.document %}
+                                                <li><a href="{% url 'seminar' seminar.pk %}" title="View Document" target="_blank"><i class="fa fa-file"></i></a></li>
+                                            {% endif %}
+                                            {% if seminar.link_proof %}
+                                                <li><a href="{{ seminar.link_proof }}" title="Visit Link" target="_blank"><i class="fa {{ seminar.link_icon }}"></i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                        {% endif %}
+
+                                    </div>
+
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -326,4 +307,115 @@
             </div>
         </div>
     </section>
+
+    <section class="mh-testimonial" id="mh-testimonial">
+        <div class="home-v-img">
+            <div class="container">
+                <div class="row section-separator">
+                    <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                        <h3 style="color: #100e17;">Recommendations</h3>
+                    </div>
+                    <div class="col-sm-12 wow fadeInUp" id="mh-client-review" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                        {% for recommendation in recommendations %}
+                            <div class="each-client-item">
+                                <div class="mh-client-item dark-bg black-shadow-1">
+                                    <img src="{{ recommendation.image.url }}" alt="" class="img-fluid">
+                                    <p style="color: white">{{ recommendation.message }}</p>
+                                    <h4 style="color: white">{{ recommendation.name }}</h4>
+                                    <span>{{ recommendation.summary }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mh-footer mh-footer-3" id="mh-contact">
+        <div class="container-fluid">
+            <div class="row section-separator">
+                <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                    <h3>Contact Me</h3>
+                </div>
+                <div class="map-image image-bg col-sm-12">
+                    <div class="container mt-30">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 mh-footer-address">
+                                <div class="col-sm-12 xs-no-padding">
+                                    <div class="mh-address-footer-item shadow-1 media wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s" style="background-color: white">
+                                        <div class="each-icon">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </div>
+                                        <div class="each-info media-body">
+                                            <h4>Address</h4>
+                                            <p>{{ seej.profile.address }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 xs-no-padding">
+                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" style="background-color: white">
+                                        <div class="each-icon">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </div>
+                                        <div class="each-info media-body">
+                                            <h4>Email</h4>
+                                            <a href="mailto:{{ seej.email }}">{{ seej.email }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 xs-no-padding">
+                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s" style="background-color: white">
+                                        <div class="each-icon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <div class="each-info media-body">
+                                            <h4>Phone</h4>
+                                            <a href="callto:{{ seej.profile.contact_no }}">{{ seej.profile.contact_no }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                                <form id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <input name="name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <input name="name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <input name="name" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <textarea class="contact-message" id="message" rows="6" placeholder="Your Message" required></textarea>
+                                        </div>
+
+                                        <!-- Subject Button -->
+                                        <div class="btn-form col-sm-12">
+                                            <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="text-left text-xs-center">
+                                            <p>Template made by Siful Islam @ 2018</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 {% endblock %}

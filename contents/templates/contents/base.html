@@ -47,7 +47,7 @@
     </div>
     <!-- End Loader -->
 
-    <header class="black-bg mh-header mh-fixed-nav nav-scroll mh-xs-mobile-nav" id="mh-header">
+    <header class="black-bg mh-header mh-fixed-nav nav-scroll mh-xs-mobile-nav" id="mh-header" style="background-color: rgba(255, 255, 255, 0.8)">
 {#        <div class="overlay"></div>#}
         <div class="container">
             <div class="row">
@@ -74,6 +74,9 @@
                                 <a class="nav-link" href="#mh-portfolio">Projects</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="#mh-testimonial">Recommendations</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="#mh-contact">Contact</a>
                             </li>
                         </ul>
@@ -85,93 +88,6 @@
 
     {% block content %}
     {% endblock %}
-
-    <footer class="mh-footer mh-footer-3" id="mh-contact">
-        <div class="container-fluid">
-            <div class="row section-separator">
-                <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                    <h3>Contact Me</h3>
-                </div>
-                <div class="map-image image-bg col-sm-12">
-                    <div class="container mt-30">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 mh-footer-address">
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item shadow-1 media wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-location-arrow"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Address</h4>
-                                            <p>{{ seej.profile.address }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-envelope-o"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Email</h4>
-                                            <a href="mailto:{{ seej.email }}">{{ seej.email }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 xs-no-padding">
-                                    <div class="mh-address-footer-item media shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s" style="background-color: white">
-                                        <div class="each-icon">
-                                            <i class="fa fa-phone"></i>
-                                        </div>
-                                        <div class="each-info media-body">
-                                            <h4>Phone</h4>
-                                            <a href="callto:{{ seej.profile.contact_no }}">{{ seej.profile.contact_no }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                <form id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
-                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <input name="name" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <textarea class="contact-message" id="message" rows="6" placeholder="Your Message" required></textarea>
-                                        </div>
-
-                                        <!-- Subject Button -->
-                                        <div class="btn-form col-sm-12">
-                                            <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="text-left text-xs-center">
-                                            <p>Template made by Siful Islam @ 2018</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- jQuery -->
     <script src="{% static 'assets/plugins/js/jquery.min.js' %}"></script>

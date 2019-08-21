@@ -50,7 +50,7 @@ class Education(models.Model):
     duration = models.CharField(max_length=15)
     level = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    achievements = models.CharField(max_length=500, blank=True)
+    achievements = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
         return f'{self.level} - {self.school}'
@@ -61,7 +61,7 @@ class WorkExperience(models.Model):
     company = models.CharField(max_length=100)
     duration = models.CharField(max_length=30)
     address = models.CharField(max_length=200)
-    summary = models.CharField(max_length=500, blank=True)
+    summary = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
         return f'{self.position} - {self.company}'
@@ -106,3 +106,36 @@ class ProjectImage(models.Model):
 
     def __str__(self):
         return f'{self.project.code} - {self.image.name}'
+
+
+class Recommendation(models.Model):
+    name = models.CharField(max_length=40)
+    message = models.CharField(max_length=400)
+    image = models.ImageField(upload_to='recommendations', default='recommendations/default')
+    summary = models.CharField(max_length=50)
+
+
+    def __str__(self):
+        return f'{self.name} - {self.summary}'
+
+
+class Certification(models.Model):
+    title = models.CharField(max_length=100)
+    authority = models.CharField(max_length=30)
+    date_issued = models.CharField(max_length=20)
+    document = models.FileField(upload_to='certifications', blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Seminar(models.Model):
+    title = models.CharField(max_length=100)
+    organizer = models.CharField(max_length=30)
+    event_date = models.CharField(max_length=20)
+    link_proof = models.CharField(max_length=200, blank=True)
+    link_icon = models.CharField(max_length=20, blank=True)
+    document = models.FileField(upload_to='seminars', blank=True)
+
+    def __str__(self):
+        return self.title
