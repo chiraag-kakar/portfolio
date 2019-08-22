@@ -7,7 +7,7 @@
 * [Python 3.6.8](https://www.python.org/)
 * PostgreSQL
 
-## Insructions
+## Instructions
 1. Install [Python](https://www.python.org/) (v.3.6.8 is recommended).
 1. Clone or download this repository.
 1. Using a command prompt/terminal, go the project folder: `/web-portfolio/`
