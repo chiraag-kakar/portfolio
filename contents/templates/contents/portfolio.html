@@ -57,7 +57,7 @@
                                 {% endfor %}
                             </ul>
                         </div>
-                        <a href="{% url 'resume' seej.profile.user.pk %}" class="btn btn-fill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" target="_blank">View Resume<i class="fa fa-file"></i></a>
+                        <a href="{{ seej.profile.cv_link }}" class="btn btn-fill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s" target="_blank">View Resume<i class="fa fa-file"></i></a>
                     </div>
                 </div>
             </div>
