@@ -5,7 +5,7 @@
 * [Django 2.2.2](https://www.djangoproject.com/)
 * JavaScript
 * [Python 3.6.8](https://www.python.org/)
-* PostgreSQL
+* SQLite
 
 ## Instructions
 1. Install [Python](https://www.python.org/) (v.3.6.8 is recommended).
