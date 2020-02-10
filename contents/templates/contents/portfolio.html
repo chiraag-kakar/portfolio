@@ -217,7 +217,7 @@
             <div class="mh-portfolio-modal" id="{{ project.pk }}" style="background-color: white;">
                 <div class="container">
                     <div class="row mh-portfolio-modal-inner">
-                        <div class="col-sm-5">
+                         <div class="col-sm-5">
                             <h2>{{ project.title }}</h2>
                             <p>{{ project.description|safe }}</p>
                             <div class="mh-about-tag">
@@ -227,16 +227,19 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            {% if project.repo_link or project.document %}
-                                {#                                <a href="{{ project.repo_link }}" class="btn" target="_blank"><i class="fa fa-github"></i> View Demo</a>#}
+                            {% if project.repo_link or project.document_link %}
                                 <ul class="social-icon">
                                     {% if project.repo_link %}
                                         <li><a href="{{ project.repo_link }}" title="Visit Repository" target="_blank"><i class="fa fa-github"></i></a></li>
                                     {% endif %}
-                                    {% if project.document %}
-                                        <li><a href="{% url 'project_document' project.pk %}" title="View Documentation" target="_blank"><i class="fa fa-file"></i></a></li>
+                                    {% if project.document_link %}
+                                        <li><a href="{{ project.document_link }}" title="View Documentation" target="_blank"><i class="fa fa-file"></i></a></li>
                                     {% endif %}
                                 </ul>
+                            {% endif %}
+                            <br><br>
+                            {% if project.demo_link %}
+                                <a href="{{ project.demo_link }}" class="btn btn-fill" target="_blank">Live Demo</a>
                             {% endif %}
                             <br>
                         </div>
