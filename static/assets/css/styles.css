@@ -1503,7 +1503,7 @@ body {
     margin-top: 20px; }
   .mh-quates .each-quates .fa {
     background-color: #fff;
-    border-radius: 50%;
+    
     color: black;
     height: 40px;
     width: 40px;
@@ -1556,7 +1556,7 @@ body {
     border: 5px solid #0bceaf;
     margin: 0 auto;
     margin-bottom: 20px;
-    border-radius: 50%; }
+    border-radius: 100%; }
   .mh-testimonial .mh-client-item p {
     margin: 10px 0; }
     .mh-testimonial .mh-client-item p::before {
@@ -1588,7 +1588,7 @@ body {
   width: 15px;
   border: 1px solid #0bceaf;
   display: inline-block;
-  border-radius: 50%;
+  
   margin-right: 10px; }
 .mh-testimonial .owl-controls .owl-dots .owl-dot.active {
   background-color: #0bceaf; }
