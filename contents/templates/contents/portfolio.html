@@ -302,11 +302,11 @@
                     <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
                         <h3 style="color: #100e17;">My Achievements</h3>
                     </div>
-                    <div col-sm-12 class="col-sm-12 wow fadeInUp"  data-wow-duration="0.8s" data-wow-delay="0.3s">
+                    <div class="col-sm-12 wow fadeInUp" id="mh-client-review" data-wow-duration="0.8s" data-wow-delay="0.3s">
                         {% for recommendation in recommendations %}
                             <div class="each-client-item">
                                 <div class="mh-client-item dark-bg black-shadow-1">
-                                    <img src="{{ recommendation.image.url }}" alt="">
+                                    <img src="{{ recommendation.image.url }}" alt="" class="img-fluid">
                                     <p style="color: white">{{ recommendation.message }}</p>
                                     <h4 style="color: white">{{ recommendation.name }}</h4>
                                     <span>{{ recommendation.summary }}</span>
