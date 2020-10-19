@@ -1,7 +1,7 @@
 {% extends 'contents/base.html' %}
 {% load static %}
 {% block content %}
-    <section class="mh-home image-bg" id="mh-home" style="background-image: url('assets/images/Data-Science.png');">
+    <section class="mh-home image-bg" id="mh-home" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ5dYmBcdkz4Fepi51_ArbKTCf_iru__alGnQ&usqp=CAU');">
         <div style="background-color: rgba(255, 255, 255, 0.9);">
             <div class="container">
                 <div class="row section-separator xs-column-reverse vertical-middle-content home-padding">
@@ -132,7 +132,7 @@
         </div>
     </section>
 
-    <section class="mh-experince image-bg" id="mh-experience" style="background-image: url('assets/images/educ-work.jpg');">
+    <section class="mh-experince image-bg" id="mh-experience" style="background-image: url('https://img.freepik.com/free-vector/creative-office-co-working-center-university-campus-modern-workplace_48369-11863.jpg?size=626&ext=jpg');">
         <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.8);">
             <div class="container">
                 <div class="row section-separator">
@@ -259,7 +259,7 @@
         {% endfor %}
     </section>
 
-    <section id="mh-certification"  class="mh-experince image-bg" style="background-image: url('assets/images/seminar.jpg');">
+    <section id="mh-certification"  class="mh-experince image-bg" style="background-image: url('https://thumbs.dreamstime.com/b/colorful-rainbow-holi-paint-color-powder-explosion-isolated-white-wide-panorama-background-colorful-rainbow-holi-paint-color-143749617.jpg');">
         <div class="img-color-overlay" style="background-color: rgba(255, 255, 255, 0.8);">
             <div class="container">
                 <div class="row section-separator">
@@ -275,9 +275,7 @@
 
                                         {% if seminar.document or seminar.link_proof %}
                                             <ul class="social-icon" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                                                <!-- {% if seminar.document %}
-                                                    <li><a href="{% url 'seminar' seminar.pk %}" title="View Document" target="_blank"><b>View</b></a></li>
-                                                {% endif %} -->
+                                                
                                                 {% if seminar.link_proof %}
                                                     <li><a href="{{ seminar.link_proof }}" title="Visit Link" target="_blank"><b>View</b></a></li>
                                                 {% endif %}
